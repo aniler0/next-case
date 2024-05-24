@@ -1,6 +1,7 @@
 "use client";
-import React, { FC } from "react";
 import { Layout } from "antd";
+import React, { FC } from "react";
+
 import "./styles.scss";
 
 type AuthLayoutProps = {

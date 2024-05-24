@@ -1,9 +1,10 @@
 "use client";
 import { Flex, Layout } from "antd";
-
 import { FC } from "react";
-import Header from "../../Header/Header";
+
+import { Header } from "components";
 import "./styles.scss";
+
 type MainLayoutProps = {
   children: React.ReactNode;
 };

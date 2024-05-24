@@ -1,5 +1,5 @@
+import { AuthLayout } from "layouts";
 import type { Metadata } from "next";
-import { AuthLayout } from "../../components";
 
 export const metadata: Metadata = {
   title: "Login",

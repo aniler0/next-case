@@ -1,6 +1,7 @@
 "use client";
+import { MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
-import { UserOutlined, MailOutlined } from "@ant-design/icons";
+
 import "./styles.scss";
 
 export default function Login() {

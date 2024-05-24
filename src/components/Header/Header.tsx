@@ -1,5 +1,6 @@
 import { Flex, Typography } from "antd";
-import { Logo, User } from "../../icons";
+
+import { Logo, User } from "icons";
 import "./styles.scss";
 
 const Header = () => {

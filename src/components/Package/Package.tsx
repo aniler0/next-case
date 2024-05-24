@@ -1,11 +1,10 @@
 import { Flex, List, Typography } from "antd";
+import Image from "next/image";
 import { GiDirectionSign } from "react-icons/gi";
 import { IoBagAdd } from "react-icons/io5";
 
-import Image from "next/image";
-
-import { PackageProps } from "./types";
 import "./styles.scss";
+import { PackageProps } from "./types";
 
 const Package = ({ packet }: PackageProps) => {
   const { Title } = Typography;

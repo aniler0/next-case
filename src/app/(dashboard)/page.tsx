@@ -1,6 +1,7 @@
 "use client";
 import { Button, Col, Flex, Row, Typography } from "antd";
-import { Package } from "../../components";
+
+import { Package } from "components";
 import "./styles.scss";
 
 export default function Home() {
