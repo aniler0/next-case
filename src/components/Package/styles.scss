@@ -1,0 +1,59 @@
+@import "../../app/global.scss";
+
+.package-wrapper {
+  border-radius: 8px;
+  background-color: $smoke;
+  height: 160px;
+  border: 2px solid transparent;
+
+  .image {
+    border-radius: 8px 0 0 8px;
+    width: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px 0 0 8px;
+    }
+  }
+
+  &.selected {
+    border-color: $selectedGreen;
+  }
+
+  &__content {
+    padding: 22px 25px 0 22px;
+    width: 100%;
+    &__title {
+      margin: 0 !important;
+    }
+    &__list {
+      margin-top: 14px;
+      span {
+        margin-right: 8px;
+        color: gray;
+      }
+    }
+
+    &__tags {
+      border-top: 1px solid $lightGray;
+      &__tag {
+        padding: 4px 15px !important;
+        background-color: $lightGray; // Assuming you have a SCSS variable named $lightGray
+        border-radius: 8px;
+        font-size: 12px;
+        margin: 6px 0 7px 0;
+      }
+    }
+    .bag-icon {
+      color: $selectedGreen;
+    }
+    .direction-icon {
+      color: $darkGray;
+    }
+  }
+}

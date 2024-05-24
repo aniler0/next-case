@@ -1,0 +1,17 @@
+@import "../global.scss";
+
+.main {
+  width: 100%;
+  border-radius: 16px;
+  background-color: white !important;
+  padding: 50px 30px;
+
+  &__package-details {
+    margin-top: 81px;
+    padding-top: 33px;
+    border-top: 1px solid $mainBorder;
+    &__price {
+      margin-left: 5px;
+    }
+  }
+}
