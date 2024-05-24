@@ -1,5 +1,5 @@
 import { IPackageModel } from "types/IPackageModel";
 
-export type PackageProps = {
+export interface PackageDetailsProps {
   packageItem: IPackageModel;
-};
+}

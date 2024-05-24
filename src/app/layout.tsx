@@ -2,6 +2,10 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { StoreProvider, TanstackProvider } from "providers";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 import "./global.scss";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AntdRegistry>{children}</AntdRegistry>
+        <StoreProvider>
+          <TanstackProvider>
+            <ToastContainer />
+            <AntdRegistry>{children}</AntdRegistry>
+          </TanstackProvider>
+        </StoreProvider>
       </body>
     </html>
   );

@@ -1,0 +1,21 @@
+@import "../../app/global.scss";
+
+.main {
+  width: 355px;
+  border-radius: 12px;
+  padding: 24px 30px;
+  background-color: white;
+
+  &__title {
+    margin: 0 0 10px 0;
+  }
+  &__selected-package {
+    background-color: $smoke; // Assuming you have a SCSS variable named $smoke
+    border-radius: 8px;
+    padding: 9px;
+    margin-bottom: 10px;
+  }
+  .paymentButton {
+    margin-top: 14px;
+  }
+}

@@ -3,8 +3,13 @@
 .package-wrapper {
   border-radius: 8px;
   background-color: $smoke;
-  height: 160px;
+  max-height: 200px;
   border: 2px solid transparent;
+  &:hover {
+    border-color: $selectedGreen;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
 
   .image {
     border-radius: 8px 0 0 8px;
@@ -22,7 +27,10 @@
   }
 
   &.selected {
+    background-color: #deffcc; /* light green background */
     border-color: $selectedGreen;
+    transition: all 0.3s ease;
+    transform: scale(1.02);
   }
 
   &__content {
@@ -33,6 +41,9 @@
     }
     &__list {
       margin-top: 14px;
+      .item {
+        margin-bottom: 0px !important;
+      }
       span {
         margin-right: 8px;
         color: gray;
@@ -54,6 +65,15 @@
     }
     .direction-icon {
       color: $darkGray;
+    }
+    &__detail {
+      margin-top: 20px;
+      font-size: 12px !important;
+      color: rgb(0, 75, 173) !important;
+      font-weight: 500;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

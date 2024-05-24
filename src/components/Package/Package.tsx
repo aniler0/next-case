@@ -1,20 +1,40 @@
 import { Flex, List, Typography } from "antd";
 import Image from "next/image";
-import { GiDirectionSign } from "react-icons/gi";
-import { IoBagAdd } from "react-icons/io5";
 
-import "./styles.scss";
+import Link from "next/link";
+import { addToCart, deleteFromCart } from "store/slices/cartSlice";
+import { useAppDispatch, useAppSelector } from "store/store";
 import { PackageProps } from "./types";
 
-const Package = ({ packet }: PackageProps) => {
+import "./styles.scss";
+
+const Package = ({ packageItem }: PackageProps) => {
   const { Title } = Typography;
 
+  const dispatch = useAppDispatch();
+  const { cart } = useAppSelector((state) => state.cart);
+
+  const handlePackageClick = (packageId: string) => {
+    const isSelected = cart.some((item) => item._id === packageId);
+
+    if (isSelected) {
+      dispatch(deleteFromCart(packageId));
+    } else {
+      dispatch(addToCart(packageItem));
+    }
+  };
+
   return (
-    <Flex className="package-wrapper">
+    <Flex
+      className={`package-wrapper${
+        cart.some((item) => item._id === packageItem._id) ? " selected" : ""
+      }`}
+      onClick={() => handlePackageClick(packageItem._id)}
+    >
       <div style={{ position: "relative", width: "200px" }}>
         <Image
-          src={`https://picsum.photos/200` || packet.imagePath}
-          alt={packet.name}
+          src={`https://picsum.photos/200` || packageItem.imagePath}
+          alt={packageItem.name}
           className="image"
           layout="fill"
         />
@@ -28,10 +48,10 @@ const Package = ({ packet }: PackageProps) => {
         <Flex vertical>
           <Flex justify="space-between">
             <Title level={4} className="package-wrapper__content__title">
-              {packet.name}
+              {packageItem.name}
             </Title>
             <Title level={4} className="package-wrapper__content__title">
-              {packet.amount} {packet.currency}
+              {packageItem.amount} {packageItem.currency}
             </Title>
           </Flex>
           <Flex justify="space-between" align="center">
@@ -39,19 +59,30 @@ const Package = ({ packet }: PackageProps) => {
               grid={{
                 gutter: 16,
               }}
-              dataSource={packet.details}
+              dataSource={["sda", "asdasd", "asdasdc", "sda", "asdasd"]}
               className="package-wrapper__content__list"
               renderItem={(item) => (
-                <List.Item>
-                  <span>•</span>
-                  {item}
-                </List.Item>
+                <>
+                  <List.Item className="item">
+                    <span>•</span>
+                    {item}
+                  </List.Item>
+                </>
               )}
             />
-            <IoBagAdd className="bag-icon" size={25} cursor={"pointer"} />
           </Flex>
         </Flex>
-
+        <Flex justify="flex-start">
+          <Link
+            className="package-wrapper__content__detail"
+            href={`/package/${packageItem._id}`}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            Paket detayını görüntüle
+          </Link>
+        </Flex>
         <Flex
           className="package-wrapper__content__tags"
           justify="space-between"
@@ -61,17 +92,12 @@ const Package = ({ packet }: PackageProps) => {
             grid={{
               gutter: 16,
             }}
-            dataSource={packet.tags}
+            dataSource={packageItem.tags}
             renderItem={(item) => (
               <List.Item className="package-wrapper__content__tags__tag">
                 {item}
               </List.Item>
             )}
-          />
-          <GiDirectionSign
-            className="direction-icon"
-            size={25}
-            cursor={"pointer"}
           />
         </Flex>
       </Flex>
