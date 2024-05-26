@@ -23,8 +23,10 @@ const Cart = ({ handleButtonClick }: CartProps) => {
             align="center"
           >
             <Text>{item.name}</Text>
-            <Flex justify="center">
-              <Title level={5}>{item.amount}</Title>
+            <Flex justify="center" align="center">
+              <Title level={5} style={{ marginBottom: "0px" }}>
+                {item.amount}
+              </Title>
               <Text strong>{item.currency}</Text>
             </Flex>
           </Flex>

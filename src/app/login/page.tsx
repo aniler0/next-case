@@ -3,25 +3,32 @@ import { MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { LoginRequestModel } from "types/http/request/LoginRequestModel";
 
 import { useRouter } from "next/navigation";
 
+import { axiosInstance } from "services";
+import { setUser } from "store/slices/userSlice";
+import { useAppDispatch } from "store/store";
+import { LoginResponseModel } from "types/http/response/LoginResponseModel";
 import "./styles.scss";
 
 export default function Login() {
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const useLogin = useMutation({
-    mutationFn: (event: Event) => {
-      return axios.post("https://caseapi-fe.paramtech.com.tr/api/users", event);
+    mutationFn: async (event: Event) => {
+      return await axiosInstance.post<LoginResponseModel>("/api/users", event);
     },
     onSuccess: (res) => {
+      dispatch(setUser(res.data.user));
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("userToken", res.data.token);
       router.push("/");
     },
     onError: (err: any) => {
-      toast.error(err.response.data.message, {
+      toast.error(err.message, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,

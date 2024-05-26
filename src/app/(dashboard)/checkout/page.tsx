@@ -1,30 +1,31 @@
 "use client";
 import { Flex, Form, Input, Typography } from "antd";
 
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Cart } from "components";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { toast } from "react-toastify";
-import { useAppSelector } from "store/store";
+import { axiosInstance } from "services";
+import { clearCart } from "store/slices/cartSlice";
+import { useAppDispatch, useAppSelector } from "store/store";
 import { formatCardNumber } from "utils";
 import "./styles.scss";
 
 export default function Checkout() {
+  const [token, setToken] = useState<string | null>(null);
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const [form] = Form.useForm();
   const { cart } = useAppSelector((state) => state.cart);
-
   const { Text } = Typography;
 
   const useCheckout = useMutation({
     mutationFn: (event: Event) => {
-      return axios.post(
-        "https://caseapi-fe.paramtech.com.tr/api/payment",
-        event
-      );
+      return axiosInstance.post("/api/checkout", event);
     },
     onSuccess: (res) => {
+      dispatch(clearCart());
       router.push("/success");
     },
     onError: (err: any) => {
@@ -37,6 +38,28 @@ export default function Checkout() {
       });
     },
   });
+
+  const { isLoading, isError, data, error } = useQuery<any, Error>({
+    queryKey: ["contract"],
+    queryFn: async () => {
+      const response = await axiosInstance.get("/api/payment");
+      return response.data;
+    },
+  });
+
+  const handleButtonClick = async () => {
+    await form.validateFields();
+    const formValues = form.getFieldsValue();
+    const cardNumberWithoutSpaces = formValues.cardNumber.replaceAll(" ", "");
+    const selectedPackageIds = cart.map((item) => item._id);
+
+    const requestObject = {
+      ...formValues,
+      packageIds: selectedPackageIds,
+      cardNumber: cardNumberWithoutSpaces,
+    };
+    useCheckout.mutate(requestObject);
+  };
 
   const handleCardInputChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -61,19 +84,6 @@ export default function Checkout() {
     form.setFieldsValue({ expireDate: formattedExpireDate });
   };
 
-  const handleButtonClick = async () => {
-    await form.validateFields();
-    const formValues = form.getFieldsValue();
-    const cardNumberWithoutSpaces = formValues.cardNumber.replaceAll(" ", "");
-    const selectedPackageIds = cart.map((item) => item._id);
-
-    const requestObject = {
-      ...formValues,
-      packageIds: selectedPackageIds,
-      cardNumber: cardNumberWithoutSpaces,
-    };
-    useCheckout.mutate(requestObject);
-  };
   return (
     <Flex className="checkout" justify="space-between">
       <Flex className="checkout__main" vertical>
@@ -146,7 +156,14 @@ export default function Checkout() {
         </Flex>
         <Flex className="checkout__main__contract" vertical>
           <Text strong>Sözleşme</Text>
-          <div className="checkout__main__contract__wrapper"></div>
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : (
+            <div
+              className="checkout__main__contract__wrapper"
+              dangerouslySetInnerHTML={{ __html: data }}
+            ></div>
+          )}
         </Flex>
       </Flex>
       <Flex className="checkout__cart">

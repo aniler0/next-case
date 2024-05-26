@@ -1,5 +1,6 @@
 import PackageDetail from "components/PackageDetail/PackageDetail";
 import { IPackageModel } from "types/IPackageModel";
+import { PackagesResponseModel } from "types/http/response/PackagesResponseModel";
 
 type PackageDetailProps = {
   params: {
@@ -9,11 +10,10 @@ type PackageDetailProps = {
 
 export async function generateStaticParams() {
   try {
-    const packages = await fetch(
-      "https://caseapi-fe.paramtech.com.tr/api/packages"
-    );
-    const data = await packages.json();
-    return data.map((post: IPackageModel) => ({
+    const packages = await fetch(process.env.API_URL + "/api/packages/");
+
+    const data: PackagesResponseModel = await packages.json();
+    return data.allPackages.map((post: IPackageModel) => ({
       packageId: post._id,
     }));
   } catch (error) {
@@ -25,9 +25,9 @@ export async function generateStaticParams() {
 const fetchPackage = async (packageId: string): Promise<IPackageModel> => {
   try {
     const response = await fetch(
-      `https://caseapi-fe.paramtech.com.tr/api/packages/${packageId}`
+      process.env.API_URL + "/api/packages/" + packageId
     );
-    const data = await response.json();
+    const data: IPackageModel = await response.json();
     return data;
   } catch (error) {
     console.error(error);

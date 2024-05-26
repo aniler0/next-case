@@ -59,7 +59,7 @@ const Package = ({ packageItem }: PackageProps) => {
               grid={{
                 gutter: 16,
               }}
-              dataSource={["sda", "asdasd", "asdasdc", "sda", "asdasd"]}
+              dataSource={packageItem.details}
               className="package-wrapper__content__list"
               renderItem={(item) => (
                 <>

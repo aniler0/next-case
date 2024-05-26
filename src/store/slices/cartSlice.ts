@@ -39,9 +39,15 @@ const packagesSlice = createSlice({
       }
       return state;
     },
+    clearCart: (state) => {
+      return {
+        ...state,
+        cart: [],
+      };
+    },
   },
 });
 
-export const { addToCart, deleteFromCart } = packagesSlice.actions;
+export const { addToCart, deleteFromCart, clearCart } = packagesSlice.actions;
 
 export default packagesSlice.reducer;

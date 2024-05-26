@@ -4,10 +4,12 @@ import { Flex, Typography } from "antd";
 import { Logo, User } from "icons";
 import { useRouter } from "next/navigation";
 
+import { useAppSelector } from "store/store";
 import "./styles.scss";
 
 const Header = () => {
   const { Title } = Typography;
+  const user = useAppSelector((state) => state.user);
   const router = useRouter();
 
   return (
@@ -16,7 +18,7 @@ const Header = () => {
       <Flex align="center">
         <User />
         <Title className="header__title" level={5}>
-          Demo
+          {user.email}
         </Title>
       </Flex>
     </Flex>

@@ -4,4 +4,6 @@ export interface PaymentRequestModel {
   cardNumber: string;
   expireDate: string;
   totalAmount: number;
+  cvv: string;
+  currency: string;
 }
