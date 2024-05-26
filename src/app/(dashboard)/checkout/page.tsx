@@ -1,19 +1,19 @@
 "use client";
-import { Flex, Form, Input, Typography } from "antd";
 
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { Flex, Form, Input, Typography } from "antd";
+import { toast } from "react-toastify";
+
 import { Cart } from "components";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { toast } from "react-toastify";
 import { axiosInstance } from "services";
-import { clearCart } from "store/slices/cartSlice";
 import { useAppDispatch, useAppSelector } from "store/store";
 import { formatCardNumber } from "utils";
+
+import { clearCart } from "store/slices/cartSlice";
 import "./styles.scss";
 
 export default function Checkout() {
-  const [token, setToken] = useState<string | null>(null);
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [form] = Form.useForm();
@@ -25,8 +25,8 @@ export default function Checkout() {
       return axiosInstance.post("/api/checkout", event);
     },
     onSuccess: (res) => {
-      dispatch(clearCart());
       router.push("/success");
+      dispatch(clearCart());
     },
     onError: (err: any) => {
       toast.error(err.response.data.message, {
@@ -167,7 +167,10 @@ export default function Checkout() {
         </Flex>
       </Flex>
       <Flex className="checkout__cart">
-        <Cart handleButtonClick={() => handleButtonClick()} />
+        <Cart
+          isLoading={useCheckout.isPending}
+          handleButtonClick={() => handleButtonClick()}
+        />
       </Flex>
     </Flex>
   );

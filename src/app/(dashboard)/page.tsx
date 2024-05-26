@@ -29,6 +29,7 @@ export default function Home() {
 
   const router = useRouter();
 
+  if (isLoading) return <Text>Loading...</Text>;
   return (
     <Flex className="main" vertical>
       <Row gutter={[70, 50]}>

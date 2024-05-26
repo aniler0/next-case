@@ -5,7 +5,7 @@ import "./styles.scss";
 import { useAppSelector } from "store/store";
 import { CartProps } from "./types";
 
-const Cart = ({ handleButtonClick }: CartProps) => {
+const Cart = ({ handleButtonClick, isLoading }: CartProps) => {
   const { cart } = useAppSelector((state) => state.cart);
   const { Title, Text } = Typography;
 
@@ -14,7 +14,9 @@ const Cart = ({ handleButtonClick }: CartProps) => {
       <Title level={4} className="main__title">
         Sepetteki Paketler
       </Title>
-      {cart.length > 0 ? (
+      {isLoading ? (
+        <>Loading</>
+      ) : cart.length > 0 ? (
         cart.map((item, key) => (
           <Flex
             className="main__selected-package"
