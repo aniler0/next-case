@@ -1,0 +1,13 @@
+.success {
+  width: 100%;
+  background-color: white; // light green background
+  border-radius: 8px; // rounded corners
+  padding: 20px; // some padding
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); // subtle box shadow
+  .ant-result-title {
+    color: black !important; // green text
+    font-size: 32px !important; // large font size
+    margin-bottom: 0 !important; // no margin
+    font-weight: 700 !important; // medium font weight
+  }
+}

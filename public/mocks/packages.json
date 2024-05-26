@@ -1,0 +1,74 @@
+{
+  "allPackages": [
+    {
+      "_id": "1",
+      "imagePath": "https://picsum.photos/200",
+      "name": "Package 1",
+      "details": ["Detail 7", "Detail 3", "Detail 9"],
+      "tags": ["Tag 7", "Tag 2", "Tag 5"],
+      "amount": 7,
+      "currency": "$",
+      "moreInformation": "Placeat illo tenetur reiciendis mollitia a eligendi. Eius quam alias veniam consequatur asperiores. Autem molestias accusamus possimus libero sunt necessitatibus impedit itaque. Reiciendis quae neque quae nobis unde incidunt perferendis. Praesentium totam quis magni ab corporis. Fugit magni eligendi aut corporis in libero. Reiciendis reiciendis omnis nihil nostrum soluta minus repellendus. Harum ipsam atque necessitatibus iusto.",
+      "price": 7,
+      "createdAt": "2021-09-30T14:10:25.000Z",
+      "updatedAt": "2021-09-30T14:10:25.000Z",
+      "__v": 0
+    },
+    {
+      "_id": "2",
+      "imagePath": "https://picsum.photos/200",
+      "name": "Package 2",
+      "details": ["Detail 8", "Detail 1", "Detail 6"],
+      "tags": ["Tag 8", "Tag 3", "Tag 4"],
+      "amount": 8,
+      "currency": "$",
+      "moreInformation": "Placeat illo tenetur reiciendis mollitia a eligendi. Eius quam alias veniam consequatur asperiores. Autem molestias accusamus possimus libero sunt necessitatibus impedit itaque. Reiciendis quae neque quae nobis unde incidunt perferendis. Praesentium totam quis magni ab corporis. Fugit magni eligendi aut corporis in libero. Reiciendis reiciendis omnis nihil nostrum soluta minus repellendus. Harum ipsam atque necessitatibus iusto.",
+      "price": 8,
+      "createdAt": "2021-09-30T14:10:25.000Z",
+      "updatedAt": "2021-09-30T14:10:25.000Z",
+      "__v": 0
+    },
+    {
+      "_id": "3",
+      "imagePath": "https://picsum.photos/200",
+      "name": "Package 3",
+      "details": ["Detail 9", "Detail 2", "Detail 5"],
+      "tags": ["Tag 9", "Tag 1", "Tag 6"],
+      "amount": 9,
+      "currency": "$",
+      "moreInformation": "Placeat illo tenetur reiciendis mollitia a eligendi. Eius quam alias veniam consequatur asperiores. Autem molestias accusamus possimus libero sunt necessitatibus impedit itaque. Reiciendis quae neque quae nobis unde incidunt perferendis. Praesentium totam quis magni ab corporis. Fugit magni eligendi aut corporis in libero. Reiciendis reiciendis omnis nihil nostrum soluta minus repellendus. Harum ipsam atque necessitatibus iusto.",
+      "price": 9,
+      "createdAt": "2021-09-30T14:10:25.000Z",
+      "updatedAt": "2021-09-30T14:10:25.000Z",
+      "__v": 0
+    },
+    {
+      "_id": "4",
+      "imagePath": "https://picsum.photos/200",
+      "name": "Package 4",
+      "details": ["Detail 4", "Detail 5", "Detail 6"],
+      "tags": ["Tag 4", "Tag 5", "Tag 6"],
+      "amount": 10,
+      "currency": "$",
+      "moreInformation": "Placeat illo tenetur reiciendis mollitia a eligendi. Eius quam alias veniam consequatur asperiores. Autem molestias accusamus possimus libero sunt necessitatibus impedit itaque. Reiciendis quae neque quae nobis unde incidunt perferendis. Praesentium totam quis magni ab corporis. Fugit magni eligendi aut corporis in libero. Reiciendis reiciendis omnis nihil nostrum soluta minus repellendus. Harum ipsam atque necessitatibus iusto.",
+      "price": 10,
+      "createdAt": "2021-09-30T14:10:25.000Z",
+      "updatedAt": "2021-09-30T14:10:25.000Z",
+      "__v": 0
+    },
+    {
+      "_id": "5",
+      "imagePath": "https://picsum.photos/200",
+      "name": "Package 5",
+      "details": ["Detail 1", "Detail 2", "Detail 3"],
+      "tags": ["Tag 1", "Tag 2", "Tag 3"],
+      "amount": 5,
+      "currency": "$",
+      "moreInformation": "Placeat illo tenetur reiciendis mollitia a eligendi. Eius quam alias veniam consequatur asperiores. Autem molestias accusamus possimus libero sunt necessitatibus impedit itaque. Reiciendis quae neque quae nobis unde incidunt perferendis. Praesentium totam quis magni ab corporis. Fugit magni eligendi aut corporis in libero. Reiciendis reiciendis omnis nihil nostrum soluta minus repellendus. Harum ipsam atque necessitatibus iusto.",
+      "price": 5,
+      "createdAt": "2021-09-30T14:10:25.000Z",
+      "updatedAt": "2021-09-30T14:10:25.000Z",
+      "__v": 0
+    }
+  ]
+}

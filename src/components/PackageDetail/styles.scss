@@ -1,0 +1,33 @@
+@import "/src/app/global.scss";
+
+.package-detail {
+  width: 100%;
+  &__wrapper {
+    border-radius: 16px;
+    background-color: white;
+    width: 65%;
+    padding: 23px 35px;
+
+    &__price {
+      margin-left: 5px;
+      font-size: 18px !important;
+    }
+    &__tag {
+      padding: 4px 15px !important;
+      background-color: $lightGray;
+      border-radius: 8px;
+      font-size: 12px;
+      margin: 6px 0 7px 0;
+    }
+    &__text-area {
+      padding: 22px 18px;
+      border: 1px solid $textAreaBorder;
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+  }
+  &__cart {
+    width: 30%;
+    height: fit-content;
+  }
+}
